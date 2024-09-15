@@ -1,0 +1,15 @@
+/* styles/globals.css */
+
+/* Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  font-family: 'Roboto', sans-serif; /* Example of custom font */
+}
+
+h1 {
+  color: #333; /* Example of custom styling */
+}
