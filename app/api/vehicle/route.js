@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import dbConnect from '../../../lib/db';
+import dbConnect from '../../../lib/mongodb';
 import Vehicle from '../../../models/Vehicle';
 
 // GET all vehicles

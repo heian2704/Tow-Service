@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Container, Typography, Grid, CircularProgress, Box, Button } from '@mui/material';
 import ServiceCard from '../../components/ServiceCard';
-import ServiceForm from '/Users/gunter/Documents/WebCode/Tow-Service/Tow-Service/components/ServicForm.js'; // Ensure this path is correct
+import ServiceForm from '../../components/ServicForm.js'; // Ensure this path is correct
+import withAuth from '../../components/withAuth'; // Ensure this path is correct
 
 const ServiceRequestPage = () => {
   const [serviceRequests, setServiceRequests] = useState([]);
@@ -62,4 +63,4 @@ const ServiceRequestPage = () => {
   );
 };
 
-export default ServiceRequestPage;
+export default withAuth(ServiceRequestPage);

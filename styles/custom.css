@@ -1,0 +1,36 @@
+/* General container padding */
+.home-container {
+    padding: 1rem;
+  }
+  
+  /* Carousel margin */
+  .carousel-section {
+    margin-bottom: 2rem;
+  }
+  
+  /* Service card styles */
+  .service-card {
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .service-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  
+  /* Testimonial card styles */
+  .testimonial {
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .testimonial:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+  

@@ -25,18 +25,3 @@ body {
     text-wrap: balance;
   }
 }
-body {
-  font-family: Arial, sans-serif;
-}
-
-.navbar {
-  margin-bottom: 20px;
-}
-
-.container {
-  padding: 20px;
-}
-
-.text-danger {
-  color: red;
-}

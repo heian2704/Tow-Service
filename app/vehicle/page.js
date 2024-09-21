@@ -3,8 +3,8 @@
 'use client'; // Add this line to mark the file as a Client Component
 
 import { useEffect, useState } from 'react';
-
-export default function VehiclePage() {
+import withAuth from '../../components/withAuth'; 
+function VehiclePage() {
   const [vehicles, setVehicles] = useState([]);
 
   useEffect(() => {
@@ -31,3 +31,4 @@ export default function VehiclePage() {
     </div>
   );
 }
+export default withAuth(VehiclePage);

@@ -1,0 +1,19 @@
+.home-container {
+  padding: 1rem;
+}
+
+.carousel {
+  margin-bottom: 2rem;
+}
+
+.service-card {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
