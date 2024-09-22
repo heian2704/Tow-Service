@@ -1,19 +1,50 @@
-.home-container {
-  padding: 1rem;
+.navbar {
+  background-color: #ffffff; /* White background */
+  padding: 10px 20px; /* Padding for a more spacious feel */
+  transition: background-color 0.3s; /* Smooth transition */
 }
 
-.carousel {
-  margin-bottom: 2rem;
+.navbar:hover {
+  background-color: #f8f9fa; /* Light grey on hover */
 }
 
-.service-card {
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.navbar .navbar-brand {
+  font-size: 1.5rem; /* Larger brand font */
+  font-weight: bold; /* Bold brand font */
+  color: #333; /* Darker text color */
 }
 
-.testimonial {
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.navbar .nav-link {
+  color: #007bff; /* Default link color */
+  padding: 10px 15px; /* Padding for a more spacious feel */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navbar .nav-link:hover {
+  color: #0056b3; /* Darker color on hover */
+  text-decoration: underline; /* Underline on hover */
+}
+
+.navbar .nav-link.active {
+  color: #0056b3; /* Active link color */
+  font-weight: bold; /* Make active link bold */
+  border-bottom: 2px solid #0056b3; /* Underline active link */
+}
+
+.navbar .btn-primary {
+  background-color: #007bff; /* Primary button color */
+  border: none; /* Remove border */
+}
+
+.navbar .btn-outline-primary {
+  color: #007bff; /* Outline button text color */
+  border-color: #007bff; /* Outline button border color */
+}
+
+.navbar .dropdown-menu {
+  border-radius: 0; /* No rounded corners */
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #f8f9fa; /* Light background on hover */
 }

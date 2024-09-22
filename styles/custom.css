@@ -1,36 +1,53 @@
-/* General container padding */
 .home-container {
-    padding: 1rem;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Carousel Section */
+.carousel-caption {
+  transition: transform 0.5s ease;
+}
+
+/* Services Section */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Testimonials Section */
+.testimonial {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial:hover {
+  transform: scale(1.05);
+}
+
+/* Call to Action Section */
+.call-to-action {
+  position: relative;
+  padding: 60px 0;
+}
+
+.call-to-action h2 {
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover Effects */
+.hover-shadow {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .call-to-action h2 {
+    font-size: 2rem;
   }
-  
-  /* Carousel margin */
-  .carousel-section {
-    margin-bottom: 2rem;
-  }
-  
-  /* Service card styles */
-  .service-card {
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-  
-  .service-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-  }
-  
-  /* Testimonial card styles */
-  .testimonial {
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-  
-  .testimonial:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-  }
-  
+}

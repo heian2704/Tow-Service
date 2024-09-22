@@ -22,16 +22,16 @@ const RegisterModal = ({ show, onClose, onRegisterSuccess }) => {
 
       if (!response.ok) {
         setError(result.error || 'Registration failed. Please try again.');
-        alert(result.error || 'Registration failed. Please try again.'); // Show alert
+        alert(result.error || 'Registration failed. Please try again.');
       } else {
-        onRegisterSuccess();
-        onClose();
-        alert('Registration successful!'); // Show alert on success
+        onRegisterSuccess(); // Notify successful registration
+        onClose(); // Close the modal
+        alert('Registration successful! Please log in.'); // Notify user of success
       }
     } catch (err) {
       console.error('Registration error:', err);
       setError('Registration failed. Please try again.');
-      alert('Registration failed. Please try again.'); // Show alert
+      alert('Registration failed. Please try again.');
     }
   };
 
