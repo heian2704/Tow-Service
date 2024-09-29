@@ -85,10 +85,3 @@ The app should now be running at http://localhost:3000.
 A 5-minute video demo of the system can be viewed on YouTube at: [Unlisted YouTube Video](https://youtu.be/SrEDqHuNfqE)
 
 ---
-
-## Usage Instructions
-
-- **Sign Up / Log In**: Customers can create an account or log in using their credentials.
-- **Request Assistance**: After logging in, users can fill out a request for roadside assistance, selecting the type of service they need.
-- **Track Service Requests**: Users can view their current and previous service requests, checking the real-time status of ongoing requests.
-- **Admin Interface**: Service providers can view and manage all requests, assigning service vehicles and updating request statuses.
