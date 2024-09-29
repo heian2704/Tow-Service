@@ -82,7 +82,7 @@ Tow Service is a full-stack web application designed to manage a 24-hour emergen
 The app should now be running at http://localhost:3000.
 
 ## Video Demo
-A 5-minute video demo of the system can be viewed on YouTube at: [Unlisted YouTube Video](#https://youtu.be/SrEDqHuNfqE)
+A 5-minute video demo of the system can be viewed on YouTube at: [Unlisted YouTube Video](https://youtu.be/SrEDqHuNfqE)
 
 ---
 
