@@ -2,13 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Container } from '@mui/material';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
-import '../styles/page.css';
+import '../styles/page.css'; // Your custom CSS
 import LoginModal from '../components/LoginModal';
 import RegisterModal from '../components/RegisterModal';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image'; // Import the Image component
+import Image from 'next/image'; // For profile image
+import './bootstrap'; // Ensure bootstrap.js is imported
 
 const Layout = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -39,7 +38,6 @@ const Layout = ({ children }) => {
         <title>Tow-service</title>
       </head>
       <body>
-        {/* Navbar */}
         <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
           <div className="container-fluid">
             <a className="navbar-brand" href="/">Tow-service</a>
@@ -76,15 +74,15 @@ const Layout = ({ children }) => {
                         src="/assets/image.png" 
                         alt="Profile" 
                         className="rounded-circle profile-image" 
-                        width={40} // Set the desired width
-                        height={40} // Set the desired height
+                        width={40}
+                        height={40}
                       />
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                       <li><a className="dropdown-item" href="/profile">Profile</a></li>
                       <li><a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a></li>
                     </ul>
-                  </li> 
+                  </li>
                 )}
               </ul>
             </div>
