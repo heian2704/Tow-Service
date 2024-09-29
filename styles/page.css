@@ -48,3 +48,8 @@
 .navbar .dropdown-item:hover {
   background-color: #f8f9fa; /* Light background on hover */
 }
+
+.profile-image {
+  width: 20px; /* Adjust as needed */
+  height: 20px; /* Adjust as needed */
+}

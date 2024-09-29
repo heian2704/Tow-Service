@@ -8,6 +8,7 @@ import '../styles/page.css';
 import LoginModal from '../components/LoginModal';
 import RegisterModal from '../components/RegisterModal';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image'; // Import the Image component
 
 const Layout = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -71,13 +72,19 @@ const Layout = ({ children }) => {
                 ) : (
                   <li className="nav-item dropdown">
                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      <img src="https://via.placeholder.com/30" alt="Profile" className="rounded-circle" />
+                      <Image 
+                        src="/assets/image.png" 
+                        alt="Profile" 
+                        className="rounded-circle profile-image" 
+                        width={40} // Set the desired width
+                        height={40} // Set the desired height
+                      />
                     </a>
                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                       <li><a className="dropdown-item" href="/profile">Profile</a></li>
                       <li><a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a></li>
                     </ul>
-                  </li>
+                  </li> 
                 )}
               </ul>
             </div>
@@ -90,19 +97,23 @@ const Layout = ({ children }) => {
         </Container>
 
         {/* Modals */}
-        <LoginModal 
-          show={showLoginModal} 
-          onClose={() => setShowLoginModal(false)} 
-          onLoginSuccess={() => setIsAuthenticated(true)} 
-        />
-        <RegisterModal 
-          show={showRegisterModal} 
-          onClose={() => setShowRegisterModal(false)} 
-          onRegisterSuccess={() => {
-            setShowRegisterModal(false); // Close the register modal
-            setShowLoginModal(true); // Open the login modal
-          }} 
-        />
+        {typeof window !== 'undefined' && (
+          <>
+            <LoginModal 
+              show={showLoginModal} 
+              onClose={() => setShowLoginModal(false)} 
+              onLoginSuccess={() => setIsAuthenticated(true)} 
+            />
+            <RegisterModal 
+              show={showRegisterModal} 
+              onClose={() => setShowRegisterModal(false)} 
+              onRegisterSuccess={() => {
+                setShowRegisterModal(false); // Close the register modal
+                setShowLoginModal(true); // Open the login modal
+              }} 
+            />
+          </>
+        )}
       </body>
     </html>
   );

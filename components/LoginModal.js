@@ -6,7 +6,8 @@ import Form from 'react-bootstrap/Form';
 const LoginModal = ({ show, onClose, onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const handleLogin = async () => {
     try {
@@ -21,18 +22,22 @@ const LoginModal = ({ show, onClose, onLoginSuccess }) => {
       const result = await response.json();
 
       if (!response.ok) {
-        setError(result.error || 'Login failed. Please try again.');
-        alert(result.error || 'Login failed. Please try again.'); // Show alert
+        setIsSuccess(false); // Indicate failure
+        setMessage(result.error || 'Login failed. Please try again.');
       } else {
         localStorage.setItem('authToken', result.token); // Save token in local storage
         onLoginSuccess();
-        onClose();
-        alert('Login successful!'); // Show alert on success
+        setIsSuccess(true); // Indicate success
+        setMessage('Login successful! Welcome back.');
+        // Optionally close the modal after a short delay
+        setTimeout(() => {
+          onClose();
+        }, 2000); // Adjust the timeout duration as needed
       }
     } catch (err) {
       console.error('Login error:', err);
-      setError('Login failed. Please try again.');
-      alert('Login failed. Please try again.'); // Show alert
+      setIsSuccess(false); // Indicate failure
+      setMessage('Login failed. Please try again.');
     }
   };
 
@@ -61,7 +66,12 @@ const LoginModal = ({ show, onClose, onLoginSuccess }) => {
               onChange={(e) => setPassword(e.target.value)} 
             />
           </Form.Group>
-          {error && <p className="text-danger">{error}</p>}
+          {/* Display message based on login result */}
+          {message && (
+            <div className={`alert ${isSuccess ? 'alert-success' : 'alert-danger'}`}>
+              {message}
+            </div>
+          )}
         </Form>
       </Modal.Body>
       <Modal.Footer>

@@ -15,7 +15,7 @@ const WithAuthComponent = ({ children }) => {
       // Show alert for a short period then redirect
       const timer = setTimeout(() => {
         router.push('/'); // Redirect to home page
-      }, 1000); // 3 seconds delay
+      }, 1000); // 1 second delay
 
       // Cleanup timer on component unmount
       return () => clearTimeout(timer);
@@ -43,12 +43,20 @@ const WithAuthComponent = ({ children }) => {
   return <>{children}</>;
 };
 
+// Set a display name for the WithAuthComponent
+WithAuthComponent.displayName = 'WithAuthComponent';
+
+// Create the HOC and set its display name
 const withAuth = (WrappedComponent) => {
-  return (props) => (
+  const EnhancedComponent = (props) => (
     <WithAuthComponent>
       <WrappedComponent {...props} />
     </WithAuthComponent>
   );
+
+  EnhancedComponent.displayName = `withAuth(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
+
+  return EnhancedComponent;
 };
 
 export default withAuth;

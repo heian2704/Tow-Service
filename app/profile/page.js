@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@mui/material'; // Import MUI Button for consistency
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import '../../styles/custom.css'; // Your custom CSS
 const ProfilePage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('••••••'); // Masked password
