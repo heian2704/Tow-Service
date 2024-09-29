@@ -8,13 +8,18 @@ import '../../styles/custom.css'; // Import the custom CSS
 
 const HomePage = () => {
   useEffect(() => {
-    const bootstrap = window.bootstrap;
-    if (bootstrap) {
-      const carousel = document.querySelector('#carouselExample');
-      if (carousel) new bootstrap.Carousel(carousel, {
-        interval: 5000,
-        ride: 'carousel'
-      });
+    // Make sure this code only runs in the browser
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      const bootstrap = window.bootstrap;
+      if (bootstrap) {
+        const carousel = document.querySelector('#carouselExample');
+        if (carousel) {
+          new bootstrap.Carousel(carousel, {
+            interval: 5000,
+            ride: 'carousel',
+          });
+        }
+      }
     }
   }, []);
 
@@ -26,21 +31,27 @@ const HomePage = () => {
             {
               imgSrc: "/assets/welcome.jpg",
               title: "Welcome to Tow-Service",
-              text: "Your trusted partner for reliable towing and roadside assistance."
+              text: "Your trusted partner for reliable towing and roadside assistance.",
             },
             {
               imgSrc: "/assets/fast.jpg",
               title: "Fast and Reliable",
-              text: "Count on us to get you back on the road quickly."
+              text: "Count on us to get you back on the road quickly.",
             },
             {
               imgSrc: "/assets/satis.jpg",
               title: "Customer Satisfaction Guaranteed",
-              text: "Your safety and satisfaction are our top priorities."
-            }
+              text: "Your safety and satisfaction are our top priorities.",
+            },
           ].map((slide, index) => (
             <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index}>
-              <Image className="d-block w-100" src={slide.imgSrc} alt={`Slide ${index + 1}`} width={800} height={400} /> {/* Add width and height */}
+              <Image
+                className="d-block w-100"
+                src={slide.imgSrc}
+                alt={`Slide ${index + 1}`}
+                width={800}
+                height={400} // Add width and height
+              />
               <div className="carousel-caption d-none d-md-block bg-dark bg-opacity-50 p-4 rounded animate__animated animate__fadeIn">
                 <h5 className="display-4">{slide.title}</h5>
                 <p className="lead">{slide.text}</p>
@@ -57,7 +68,7 @@ const HomePage = () => {
           <span className="visually-hidden">Next</span>
         </a>
       </div>
-  
+
       {/* Services Section */}
       <section className="services py-5 bg-white">
         <div className="container">
@@ -66,11 +77,18 @@ const HomePage = () => {
             {[
               { name: "Towing", imgSrc: "/assets/towing.png" },
               { name: "Fuel Delivery", imgSrc: "/assets/fuel.png" },
-              { name: "Battery Jumpstart", imgSrc: "/assets/battery.png" }
+              { name: "Battery Jumpstart", imgSrc: "/assets/battery.png" },
             ].map((service, index) => (
               <div className="col-md-4 mb-4" key={index}>
                 <div className="card service-card text-center shadow-lg border border-2 border-dark transition-shadow hover-shadow" style={{ borderRadius: '15px' }}>
-                  <Image className="card-img-top mb-3" src={service.imgSrc} alt={service.name} width={400} height={300} style={{ borderRadius: '15px 15px 0 0' }} /> {/* Add width and height */}
+                  <Image
+                    className="card-img-top mb-3"
+                    src={service.imgSrc}
+                    alt={service.name}
+                    width={400}
+                    height={300} // Add width and height
+                    style={{ borderRadius: '15px 15px 0 0' }}
+                  />
                   <div className="card-body">
                     <h5 className="card-title font-weight-bold">{service.name}</h5>
                     <p className="card-text">Description for {service.name} services.</p>
@@ -107,7 +125,9 @@ const HomePage = () => {
           <h2 className="font-weight-bold mb-4">Need Immediate Assistance?</h2>
           <p className="lead">Contact us now at:</p>
           <p className="h4 mb-4">
-            <a href="tel:+1234567890" className="text-light">+1 (234) 567-890</a>
+            <a href="tel:+1234567890" className="text-light">
+              +1 (234) 567-890
+            </a>
           </p>
         </div>
       </section>

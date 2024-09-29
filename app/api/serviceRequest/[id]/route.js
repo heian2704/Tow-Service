@@ -3,10 +3,11 @@ import dbConnect from '../../../../lib/mongodb';
 import ServiceRequest from '../../../../models/ServiceRequest';
 
 // GET a service request by ID
-export async function GET({ params }) {
+export async function GET(req, { params }) {
   await dbConnect();
   try {
-    const serviceRequest = await ServiceRequest.findById(params.id).populate('customer vehicle');
+    // Only populate 'vehicle' since 'customer' isn't part of the schema
+    const serviceRequest = await ServiceRequest.findById(params.id).populate('vehicle');
     if (!serviceRequest) {
       return NextResponse.json({ error: 'Service request not found' }, { status: 404 });
     }
@@ -17,24 +18,63 @@ export async function GET({ params }) {
 }
 
 // PUT (update) a service request by ID
-export async function PUT({ params, request }) {
+export async function PUT(req) {
   await dbConnect();
+
   try {
-    const data = await request.json();
-    const updatedServiceRequest = await ServiceRequest.findByIdAndUpdate(params.id, data, { new: true });
-    return NextResponse.json(updatedServiceRequest);
+    const id = req.url.split('/').pop(); // Get the ID from the URL
+
+    const data = await req.json(); // Parse incoming request data
+
+    console.log('Request Body:', data); // Log the request body
+
+    // Check if the request body contains the necessary fields
+    if (!data.description || !data.location || !data.requestType) {
+      throw new Error('Missing required fields: description, location, or requestType');
+    }
+
+    // Update the service request
+    const updatedServiceRequest = await ServiceRequest.findByIdAndUpdate(id, data, { new: true });
+
+    if (!updatedServiceRequest) {
+      throw new Error('Service request not found');
+    }
+
+    // Return the updated document
+    return NextResponse.json(updatedServiceRequest, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to update service request' }, { status: 500 });
+    console.error("Error updating service request:", error);
+    return NextResponse.json(
+      { error: 'Failed to update service request' },
+      { status: 500 }
+    );
   }
 }
 
-// DELETE a service request by ID
-export async function DELETE({ params }) {
-  await dbConnect();
+
+// DELETE (delete) a service request by ID
+export async function DELETE(req, { params }) {
+  const { id } = params;
+
   try {
-    await ServiceRequest.findByIdAndDelete(params.id);
-    return NextResponse.json({ message: 'Service request deleted' });
+    await dbConnect();
+
+    // Attempt to delete the service request by ID
+    const deletedRequest = await ServiceRequest.findByIdAndDelete(id);
+
+    if (!deletedRequest) {
+      return NextResponse.json(
+        { success: false, message: 'Service request not found' },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ success: true, message: 'Service request deleted' });
   } catch (error) {
-    return NextResponse.json({ error: 'Failed to delete service request' }, { status: 500 });
+    console.error('Error deleting service request:', error);
+    return NextResponse.json(
+      { success: false, message: 'Internal server error' },
+      { status: 500 }
+    );
   }
 }
